@@ -2,8 +2,11 @@ from django.test import Client
 from django.urls import reverse
 import pytest
 
-
-from taxi.models import Manufacturer, Car, Driver
+from taxi.models import (
+    Manufacturer,
+    Car,
+    Driver
+)
 
 
 @pytest.mark.parametrize(
@@ -19,7 +22,6 @@ from taxi.models import Manufacturer, Car, Driver
         ),
         pytest.param(reverse("taxi:car-list"), id="car list"),
         pytest.param(reverse("taxi:car-create"), id="car create"),
-        pytest.param(reverse("taxi:car-list"), id="car list"),
         pytest.param(reverse("taxi:driver-list"), id="driver list"),
         pytest.param(reverse("taxi:driver-create"), id="driver create"),
 
@@ -60,4 +62,4 @@ def test_login_required_with_pk(url):
     url = reverse(url, kwargs={"pk": 1})
     client = Client()
     res = client.get(url)
-    assert res.status_code != 200
+    assert res.status_code == 302
