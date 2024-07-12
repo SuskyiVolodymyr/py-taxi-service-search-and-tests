@@ -22,7 +22,10 @@ def authorize_user():
 def db_objects():
     Manufacturer.objects.bulk_create(
         [
-            Manufacturer(name=f"Test{i}_manufacturer", country="country") for i in range(15)
+            Manufacturer(
+                name=f"Test{i}_manufacturer",
+                country="country"
+            ) for i in range(15)
         ]
     )
 
@@ -30,7 +33,10 @@ def db_objects():
 
     Car.objects.bulk_create(
         [
-            Car(model=f"Test{i}_car", manufacturer=manufacturer) for i in range(15)
+            Car(
+                model=f"Test{i}_car",
+                manufacturer=manufacturer
+            ) for i in range(15)
         ]
     )
     Driver.objects.bulk_create(

@@ -20,7 +20,10 @@ class ModelsTest(TestCase):
             license_number=license_number
         )
 
-        self.car = Car.objects.create(model="Test", manufacturer=self.manufacturer)
+        self.car = Car.objects.create(
+            model="Test",
+            manufacturer=self.manufacturer
+        )
 
     def test_manufacturer_str(self):
         self.assertEqual(
@@ -38,7 +41,8 @@ class ModelsTest(TestCase):
 
         self.assertEqual(
             str(self.driver),
-            f"{self.driver.username} ({self.driver.first_name} {self.driver.last_name})"
+            f"{self.driver.username} "
+            f"({self.driver.first_name} {self.driver.last_name})"
         )
 
     def test_car_str(self):
